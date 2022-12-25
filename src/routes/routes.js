@@ -1,15 +1,9 @@
 import express from "express";
-import db from "../config/db.js";
+import userRoutes from "./userRoutes.js";
+import annotationRoutes from "./annotationRoutes.js";
 
 const router = express.Router();
-
-router.get("/", async (req, res) => {
-  try {
-    await db.collection("test").insertOne({ id: 1, name: "test" });
-    return res.sendStatus(201);
-  } catch (e) {
-    return res.status(500).send(e.message);
-  }
-});
+router.use(userRoutes);
+router.use(annotationRoutes);
 
 export default router;
