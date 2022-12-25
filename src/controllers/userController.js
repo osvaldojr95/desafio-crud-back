@@ -1,5 +1,4 @@
 import { userServices } from "../services/userServices.js";
-dotenv.config();
 
 export async function signUp(req, res) {
   const { username, email, password } = req.body;

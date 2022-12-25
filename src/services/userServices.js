@@ -48,8 +48,23 @@ async function signOutUser(username) {
   await userRepository.signOut(user._id);
 }
 
+async function findByToken(token) {
+  const session = await userRepository.findSession(token);
+  if (!session) {
+    throw { text: "User not logged", status: 401 };
+  }
+
+  const user = await userRepository.findById(session.userId);
+  if (!user) {
+    throw { text: "", status: 404 };
+  }
+
+  return user;
+}
+
 export const userServices = {
   createUser,
   signInUser,
   signOutUser,
+  findByToken,
 };

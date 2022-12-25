@@ -1,3 +1,4 @@
 export function errorHandlerMiddleware(err, req, res, next) {
-  return res.status(Number(err.status)).send(err.text);
+  console.log(err);
+  return res.status(Number(err.status ?? 500)).send(err.text ?? "");
 }
