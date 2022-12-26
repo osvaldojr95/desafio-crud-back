@@ -13,7 +13,7 @@ export async function signIn(req, res) {
 }
 
 export async function signOut(req, res) {
-  const { username } = req.body;
-  await userServices.signOutUser(username);
+  const { userId } = res.locals.body;
+  await userServices.signOutUser(userId);
   res.sendStatus(200);
 }

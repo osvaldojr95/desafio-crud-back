@@ -39,13 +39,8 @@ async function signInUser(email, password) {
   return { user: user.username, token };
 }
 
-async function signOutUser(username) {
-  const user = await userRepository.findByUser(username);
-  if (!user) {
-    throw { text: "", status: 404 };
-  }
-
-  await userRepository.signOut(user._id);
+async function signOutUser(idUser) {
+  await userRepository.signOut(idUser);
 }
 
 async function findByToken(token) {

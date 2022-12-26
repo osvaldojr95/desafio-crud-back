@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 const annotationsSchema = Joi.object({
-  text: Joi.string().min(1).required(),
+  text: Joi.string().required(),
 });
 
 export async function annotationValidation(req, res, next) {
